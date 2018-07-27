@@ -47,7 +47,7 @@ public class CheckExcelFileTypeUtil {
     }
 
     /**
-     * @author guoxk
+     * @author MaYong
      *
      * 方法描述：根据文件路径获取文件头信息
      * @param filePath 文件路径
@@ -60,7 +60,7 @@ public class CheckExcelFileTypeUtil {
     }
 
     /**
-     * @author guoxk
+     * @author MaYong
      *
      * 方法描述：根据文件路径获取文件头信息
      * @param filePath 文件路径
@@ -92,7 +92,7 @@ public class CheckExcelFileTypeUtil {
     }
 
     /**
-     * @author guoxk
+     * @author MaYong
      *
      * 方法描述：将要读取文件头信息的文件的byte数组转换成string类型表示
      * @param src 要读取文件头信息的文件的byte数组
@@ -116,7 +116,7 @@ public class CheckExcelFileTypeUtil {
         return builder.toString();
     }
     /**
-     * @author guoxk
+     * @author MaYong
      *
      * 方法描述：测试
      * @param args
