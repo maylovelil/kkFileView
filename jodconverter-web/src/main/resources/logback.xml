@@ -4,15 +4,31 @@
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
     <jmxConfigurator/>
     <logger name="org.springframework.web" level="info"/>
-    <appender name="stash" class="net.logstash.logback.appender.LogstashSocketAppender">
+<!--    <appender name="stash" class="net.logstash.logback.appender.LogstashSocketAppender">
         <port>10800</port>
         <host>192.168.1.109</host>
         <includeCallerData>true</includeCallerData>
         <customFields>{"app_name":"@appName@"}</customFields>
+    </appender>-->
+    <property name="LOG_PATH" value="/data/logs" />
+    <appender name="FILENAME"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/app.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/partner-log-%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>500MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <append>true</append>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%-5p [%d] %C:%L - %m %n</pattern>
+            <charset>utf-8</charset>
+        </encoder>
     </appender>
-    <root level="INFO">
-        <!--<appender-ref ref="dailyRollingFile"/>
-        <appender-ref ref="consoleRolling"/>-->
-        <appender-ref ref="stash"/>
+    <root level="debug">
+        <appender-ref ref="FILENAME"/>
     </root>
 </configuration>
